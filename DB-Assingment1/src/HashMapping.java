@@ -2,6 +2,9 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.HashMap;
 import java.util.Properties;
 import java.util.Scanner;
@@ -14,11 +17,24 @@ public class HashMapping {
     public static void main(String[] args) throws IOException {
         HashMapping main = new HashMapping();
 
-        //main.FillMap();
-        //main.WriteFile();
-        main.ReadFile();
-        main.Commands();
+        main.CheckBinFileExist();
 
+    }
+
+    //Function to check if the data.bin-file exist, if not, a new one will be created with default data
+    public void CheckBinFileExist() throws IOException {
+        Path binPath = Paths.get("data.bin");
+        if(Files.notExists(binPath)){
+            FillMap();
+            WriteFile();
+            Commands();
+
+        } else if (Files.exists(binPath)) {
+            //FillMap();
+            //WriteFile();
+            ReadFile();
+            Commands();
+        }
     }
 
     //Fills the HashMap with key and value
@@ -203,8 +219,6 @@ public class HashMapping {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                System.out.println(writeMap.size() +" WM");
-                System.out.println(readContentMap.size() + " RCM");
             }
         }
     }
