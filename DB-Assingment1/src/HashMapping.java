@@ -167,7 +167,7 @@ public class HashMapping {
                 System.out.println("---------");
                 System.out.println("Retrieve a President, based on Key");
                 System.out.println("get [#President]");
-                System.out.println("get 45");
+                System.out.println("get 44");
                 System.out.println("Value: Obama");
                 System.out.println("---------");
                 System.out.println("Print current DB");
